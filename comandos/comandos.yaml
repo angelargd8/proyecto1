@@ -30,3 +30,7 @@ npm install react-router-dom
 node:
 node index.js
 npx nodemon index.js
+node main.js
+
+docker:
+docker compose up
