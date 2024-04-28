@@ -11,6 +11,8 @@
     justify-content: space-between;
     padding: 10px;
     z-index: 5;
+    flex-direction: row;
+    
 }
 
 .nav-text{
@@ -28,13 +30,13 @@
 }
 
 .textos{
-  
+    flex-direction: row;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .btn{
-    background-color: #765689;
+    background-color: #3c096c;
     color: #ffffff;
     border: none;
     border-radius: 10px;
@@ -42,7 +44,7 @@
     margin-right: 40px;
     margin-left: 10px;
     cursor: pointer;
-    transition: background-color 0.25s;
+    transition: background-color 0.50s;
     flex-direction: row;
 }
 

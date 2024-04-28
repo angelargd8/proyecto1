@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS blogs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    titulo VARCHAR(200) NOT NULL,
     descripcion TEXT NOT NULL, 
     imagen MEDIUMTEXT NOT NULL
 );
@@ -23,6 +22,7 @@ CREATE TABLE IF NOT EXISTS funciones (
 );
 
 CREATE TABLE IF NOT EXISTS users (
-    username VARCHAR(255) NOT NULL,
+    username VARCHAR(255) PRIMARY KEY,
     password MEDIUMTEXT NOT NULL,
+    rol VARCHAR(255) NOT NULL
 );

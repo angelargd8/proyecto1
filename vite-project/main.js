@@ -10,7 +10,19 @@ const path = require('path')
 const app = express();
 
 //middleware para json Aca es donde se usa los cors
-app.use(cors());
+//app.use(cors(/*{ origin: 'http://localhost:5173' }*/));
+app.use(cors({
+  origin: function(origin, callback){
+    // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
+    if(!origin) return callback(null, true);
+
+    const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173'];
+    if(allowedOrigins.indexOf(origin) === -1){
+      return callback(new Error('La política de CORS no permite este origen'), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 app.use(express.json())
 
@@ -18,13 +30,16 @@ app.use(express.json())
 //const swaggerDocument = yaml.load('./swagger.yaml')
 const swaggerDocument = yaml.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.use(express.static(path.join(__dirname, 'vite-project/src')))
+//app.use(express.static(path.join(__dirname, 'vite-project/src')))
+app.use(express.static('vite-project'));
 
 
-app.get('/', (req, res) => {
+
+app.get('/', (/*req, res*/) => {
   //res.send('Hello World from Express!')
-  res.sendFile(path.join(__dirname, './index.html'))
+  //res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
+  //res.sendFile('index.html', { root: __dirname });
 })
 
 
@@ -36,7 +51,7 @@ app.get('/index.html', (req, res) => {
 
 app.get('/index', (req, res) => {
   //mandarle aqui el index
-  res.sendFile(path.join(__dirname, '../index.html'))
+  res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
 })
 
@@ -82,6 +97,7 @@ app.post('/posts', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) =
   try{
     console.log(req)
     const { title, content, descripcion, imagen } = req.body
+    console.log('post creado')
     const newPost = await db.createPost(title, content, descripcion, imagen)
     res.json({ message: 'Post created' })//
     res.status(200).json(newPost)
@@ -141,10 +157,23 @@ app.delete('/post/:postId', async (req, res) => {
 })
 
 
+//get user
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body
+  const user = await db.getUser(username, password)
+
+  if(user.length === 0) {
+    res.status(404).json({ message: 'User not found' })
+  }else{
+    res.status(200).json(user)
+  } 
+})
+
+
 //inicio del server
 const port = 5173
 app.listen(port, () => {
-  //console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Example app listening at http://localhost:${port}`)
   console.log(`Server listening at http://127.0.0.1:${port}`)
 })
 
@@ -153,6 +182,3 @@ app.listen(port, () => {
 app.use((req, res) => {
   res.status(501).send('error 501: metodo no implementad')
 })
-
-
-//export default app;

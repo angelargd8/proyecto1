@@ -13,51 +13,47 @@ DELETE /posts/:postId que borra un post. No debe retornar contenido y debe retor
 async function getAllPosts() {
     const [rows] = await conn.query('SELECT * FROM blogs')
     return rows
-   }
-   
-   
-   async function createPost(title, content,  descripcion, imagen) {
-       const [result] = await conn.query('INSERT INTO blogs (title, content, descripcion, imagen) VALUES (?, ?, ?, ?)', [title, content,  descripcion, imagen])
-       return result
-   }
-   
-   async function getPostId(id){
-       const [result] = await conn.query('SELECT * FROM blogs WHERE id = ?', [id])
-       return result
-   }
-   
-   async function updatePost(id, title, content,  descripcion, imagen){
-       const [result] = await conn.query('UPDATE blogs SET title = ?, content = ?,  descripcion = ?, imagen = ? WHERE id = ?', [title, content,  descripcion, imagen, id])
-       return result
-   }
-   
-   //Eliminar Post
-   async function deletePost(id){
-       const [result] = await conn.query('DELETE FROM blogs WHERE id = ?', [id])
-       return result
-   }
-   
-   
-   async function createPost2(funcion, informacion) {
-       const [result] = await conn.query('INSERT INTO blog_db2.funciones (funcion, informacion) VALUES (?, ?)', [funcion, informacion])
-       return result
-   }
-   
-   async function getAllPostsFunctions() {
-       const [rows] = await conn.query('SELECT * FROM blog_db2.funciones')
-       return rows
-      }
-      
-   
-/*export {
-    getAllPosts,
-    createPost, 
-    getPostId,
-    updatePost,
-    deletePost,
-    createPost2,
-    getAllPostsFunctions
-}*/
+}
+
+
+async function createPost(title, content,  descripcion, imagen) {
+    const [result] = await conn.query('INSERT INTO blogs (title, content, descripcion, imagen) VALUES (?, ?, ?, ?)', [title, content,  descripcion, imagen])
+    return result
+}
+
+async function getPostId(id){
+    const [result] = await conn.query('SELECT * FROM blogs WHERE id = ?', [id])
+    return result
+}
+
+async function updatePost(id, title, content,  descripcion, imagen){
+    const [result] = await conn.query('UPDATE blogs SET title = ?, content = ?,  descripcion = ?, imagen = ? WHERE id = ?', [title, content,  descripcion, imagen, id])
+    return result
+}
+
+//Eliminar Post
+async function deletePost(id){
+    const [result] = await conn.query('DELETE FROM blogs WHERE id = ?', [id])
+    return result
+}
+
+//crear post 2
+async function createPost2(funcion, informacion) {
+    const [result] = await conn.query('INSERT INTO blog_db2.funciones (funcion, informacion) VALUES (?, ?)', [funcion, informacion])
+    return result
+}
+
+async function getAllPostsFunctions() {
+    const [rows] = await conn.query('SELECT * FROM blog_db2.funciones')
+    return rows
+}
+    
+//crear post 2
+async function getUser(username, password) {
+    const [result] = await conn.query('SELECT * FROM users WHERE username = ? and password= ? ', [username, password])
+    return result
+}
+
 module.exports= {
     getAllPosts,
     createPost, 
@@ -65,5 +61,6 @@ module.exports= {
     updatePost,
     deletePost,
     createPost2,
-    getAllPostsFunctions
+    getAllPostsFunctions,
+    getUser
  }

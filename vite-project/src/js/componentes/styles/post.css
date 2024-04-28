@@ -1,0 +1,29 @@
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin-top: 70px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #180729b0;
+    width: 100%;
+    max-width: 500px;
+    margin-left: 30%;
+    color: #ffffff;
+    font-size: large;
+}
+
+.input{
+    flex-direction: row;
+    margin-right: 5%;
+    
+}
+
+.boton{
+    flex-direction: column;
+    margin-right: 5%;
+    margin-top: 20px;
+    background-color: #765689;
+}

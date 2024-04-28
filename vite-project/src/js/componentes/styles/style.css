@@ -2,13 +2,14 @@ body{
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
-    color: #ffffff !important;    
     justify-content: space-between; 
 }
 
 body.index{
-    background-color: #ffffff;
+    background-color: #500640;
     background-image: url(../src/assets/img/wallpaper2.jpg);
+    background-repeat: no-repeat ;
+    background-size: cover;
 
 }
 
