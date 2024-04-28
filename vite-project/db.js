@@ -1,4 +1,5 @@
-import conn from './conn.js';
+//import conn from './conn.js';
+const conn = require('./conn.js')
 
 /*
 GET /posts que retorna un listado de todos los posts. Debe retornar un array y un status 200 si fue exitoso.
@@ -48,7 +49,7 @@ async function getAllPosts() {
       }
       
    
-export {
+/*export {
     getAllPosts,
     createPost, 
     getPostId,
@@ -56,6 +57,13 @@ export {
     deletePost,
     createPost2,
     getAllPostsFunctions
-}
-   
-    //validarConexion()
+}*/
+module.exports= {
+    getAllPosts,
+    createPost, 
+    getPostId,
+    updatePost,
+    deletePost,
+    createPost2,
+    getAllPostsFunctions
+ }

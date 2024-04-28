@@ -1,13 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import * as db from './db.js';
-import swaggerUi from 'swagger-ui-express';
-import path from 'path';
-//import yaml from 'js-yaml';
-import { load as yamlLoad } from 'js-yaml';
-import url from 'url';
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const express = require('express')
+const cors = require('cors')
+const db = require('./db.js')
+
+const swaggerUi = require('swagger-ui-express')
+const yaml = require('js-yaml')
+//para luego mandar la path al index
+const path = require('path')
 
 const app = express();
 
@@ -18,21 +16,21 @@ app.use(express.json())
 
 //cargar el archivo YAML que describe endpoints
 //const swaggerDocument = yaml.load('./swagger.yaml')
-const swaggerDocument = yamlLoad('./swagger.yaml')
+const swaggerDocument = yaml.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'vite-project/src')))
 
 
 app.get('/', (req, res) => {
   //res.send('Hello World from Express!')
-  res.sendFile(path.join(__dirname, '../index.html'))
+  res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
 })
 
 
 app.get('/index.html', (req, res) => {
   //mandarle aqui el index
-  res.sendFile(path.join(__dirname, '../index.html'))
+  res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
 })
 
@@ -157,4 +155,4 @@ app.use((req, res) => {
 })
 
 
-export default app;
+//export default app;
