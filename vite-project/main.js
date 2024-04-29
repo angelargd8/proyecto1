@@ -34,14 +34,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use(express.static('vite-project'));
 
 
-
 app.get('/', (/*req, res*/) => {
   //res.send('Hello World from Express!')
   //res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
   //res.sendFile('index.html', { root: __dirname });
 })
-
 
 app.get('/index.html', (req, res) => {
   //mandarle aqui el index
@@ -55,20 +53,6 @@ app.get('/index', (req, res) => {
   console.log('Hello World from Express!')
 })
 
-
-app.get('/funciones', (req, res) => {
-  res.send('Hello World from Express!')
-})
-
-app.get('/blogs', (req, res) => {
-  res.send('Hello World from Express!')
-})
-
-app.get('/type', (req, res) => {
-  res.send('Hello World from Express!')
-})
-
-
 //--get all posts
 app.get('/posts/info', async (req, res) => {
   const posts = await db.getAllPosts()
@@ -79,7 +63,6 @@ app.get('/posts/info', async (req, res) => {
   } 
   console.log('posts', posts)
 })
-
 
 //--get all posts from  functions
 app.get('/posts/f', async (req, res) => {
@@ -99,15 +82,12 @@ app.post('/posts', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) =
     const { title, content, descripcion, imagen } = req.body
     console.log('post creado')
     const newPost = await db.createPost(title, content, descripcion, imagen)
-    res.json({ message: 'Post created' })//
-    res.status(200).json(newPost)
-
+    res.status(200).json({ message: 'Post created', post: newPost })
     console.log('Post created')
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
 })
-
 
 //--create post 2
 app.post('/posts/p', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) => {
@@ -146,13 +126,17 @@ app.put('/posts/:postId', async (req, res) => {
   }
 
 })
+
 //--delete post
-app.delete('/post/:postId', async (req, res) => {
+app.delete('/post/delete/:id', async (req, res) => {
   const { id } = req.params
   const deletedPost = await db.deletePost(id)
-  res.status(204).json(deletedPost)
-  res.json({ message: 'Post deleted' })
-  console.log('Post deleted')
+  if (deletedPost) {
+    res.status(204).json({ message: 'Post deleted' })
+  }else{
+    res.status(404).json({ message: 'Post not found' })
+  }
+  //console.log('Post deleted')
 
 })
 
@@ -178,7 +162,6 @@ app.listen(port, () => {
 })
 
 //validacion de implementacion de http 
-
 app.use((req, res) => {
   res.status(501).send('error 501: metodo no implementad')
 })
