@@ -8,9 +8,8 @@
     background-size: cover;
     background-attachment: fixed;
     padding: 20px;
-    background-color: #180729;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 
 }
 .login .formulario{
@@ -25,6 +24,7 @@
     height: 80%;
     margin-bottom: 35%;
     margin-top: 6%;
+    flex-direction: column;
 }
 
 .login .form-text{
@@ -40,6 +40,10 @@
     align-items: center;    
     }
 
+.login .boton{
+    background-color:#3c096c;
+}
+
 .login .btn{
     margin: 8px;
     padding: 17px;
@@ -51,22 +55,10 @@
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
-
+    width: 50%;
 }
 
-.login .btn2{
-    border-radius: 10px;
-    color: white;
-    border: none;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
 
-}
-
-.boton{
-    background-color: #3c096c;
-}
 .login  .btn:hover, .login .btn2:hover{
     background-color: #2a7727d2;
     color: white;
@@ -81,4 +73,46 @@
     margin: 10px;
     border-radius: 10px;
     color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .login{
+        top:20px;
+        left:-160px;
+        right: 0;
+        bottom: 0;
+        padding: 80px;
+        margin-top: 10px;
+        margin-right: 40px;
+    }
+
+    .login .formulario{
+        width: 80%; /* Ajusta este valor según tus necesidades */
+        height: auto; /* Ajusta este valor según tus necesidades */
+    }
+
+    .login .btn{
+        width: 70%; /* Ajusta este valor según tus necesidades */
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .login{
+        position: absolute;
+        top:-100px;
+        left:-10;
+        right: 0;
+        bottom: 0;
+        padding: 80px;
+        margin-top: 10px;
+    }
+    .login .formulario{
+        width: 100%; /* Ajusta este valor según tus necesidades */
+        height: auto; /* Ajusta este valor según tus necesidades */
+    }
+
+    .login .btn{
+        width: 100%; /* Ajusta este valor según tus necesidades */
+    }
 }

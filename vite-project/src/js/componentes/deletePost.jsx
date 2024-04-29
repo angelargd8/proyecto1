@@ -1,9 +1,21 @@
 import React from 'react'
 import './styles/delete.css'
+import { useNavigate } from 'react-router-dom';
+
 function DeletePost(){
+    //navegacion
+    const navigate = useNavigate();
+
     //obtener el rol
     const userRol = localStorage.getItem('sessionId');
     const [id, setId] = React.useState('')
+
+    //verificar el rol de usuario
+    React.useEffect(() => {
+        if(userRol === null){
+            navigate("/login");
+        }
+    }, [userRol, navigate]);
 
     async function handleDelete(event){
         event.preventDefault()
@@ -23,6 +35,7 @@ function DeletePost(){
                 throw new Error('Error en la respuesta del servidor');
             }
             alert('Post eliminado')
+            navigate("/home");
         }
         catch (error) {
             console.error('Error:', error);

@@ -27,7 +27,7 @@ async function getPostId(id){
 }
 
 async function updatePost(id, title, content,  descripcion, imagen){
-    const [result] = await conn.query('UPDATE blogs SET title = ?, content = ?,  descripcion = ?, imagen = ? WHERE id = ?', [title, content,  descripcion, imagen, id])
+    const [result] = await conn.query('UPDATE blogs SET title = ?, content = ?,  descripcion = ?, imagen = ? WHERE id = ?', [title, content,  descripcion, imagen,id])
     return result
 }
 

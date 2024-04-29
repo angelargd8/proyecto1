@@ -1,4 +1,4 @@
-.formulario{
+.baseupdate .formulario{
     display: flex;
     flex-direction: row;
     align-items: left;
@@ -13,12 +13,12 @@
     color: #ffffff;
     font-size: large;
 }
-.info label{
+.baseupdate .info label{
     width: 200px;
     display: inline-block;
     margin-top: 3%;
 }
-.info{
+.baseupdate .info{
     margin-top: -10%;
     flex-direction: row;
     display: flex;
@@ -26,11 +26,11 @@
     margin-bottom: 5px;
 }
 
-.input{
+.baseupdate .input{
     margin-left: 15%;
     width: 200px;
 }
-.boton{
+.baseupdate .boton{
     flex-direction: column;
     margin-top: 20px;
     background-color: #765689;

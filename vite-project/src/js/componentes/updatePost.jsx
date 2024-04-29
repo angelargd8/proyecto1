@@ -1,13 +1,23 @@
 import './styles/update.css'
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 function UpdatePost(){
+    //navegacion
+    const navigate = useNavigate();
+    //sets variables
     const userRol = localStorage.getItem('sessionId');
     const [id, setId] = React.useState('')
     const [content, setContent] = React.useState('')
     const [title, setTitle] = React.useState('')
     const [descripcion, setDescripcion] = React.useState('')
     const [imagen, setImagen] = React.useState('')
+
+    //verificar el rol de usuario
+    React.useEffect(() => {
+        if(userRol === null){
+            navigate("/login");
+        }
+    }, [userRol, navigate]);
 
     async function handleSubmit(event){
         event.preventDefault()
@@ -29,13 +39,14 @@ function UpdatePost(){
                 throw new Error('Error en la respuesta del servidor');
             }
             alert('Post actualizado')
+            navigate("/home");
     }catch (error){
         console.error('Error:', error);
         alert('Ocurrió un error al actualizar el post');
     }
     }
     return(
-        <div className="base">
+        <div className="baseupdate">
             {userRol === 'admin' && (
             <div className='formulario'>
                 <form onSubmit={handleSubmit} >

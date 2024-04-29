@@ -95,8 +95,7 @@ app.post('/posts/p', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res)
     console.log(req)
     const { funcion, informacion } = req.body
     const newPost = await db.createPost2(funcion, informacion )
-    res.json({ message: 'Post created' })//
-    res.status(200).json(newPost)
+    res.status(200).json({ message: 'Post created', post: newPost  })//
 
     console.log('Post created')
   } catch (error) {
@@ -114,10 +113,10 @@ app.get('/posts/:postId', async (req, res) => {
 })
 
 //--update post
-app.put('/posts/update/:id', async (req, res) => {
+app.put('/post/update/:id', async (req, res) => {
   const { id } = req.params
-  const { title, content, titulo, descripcion, imagen } = req.body
-  const updatedPost = await db.updatePost(id, title, content, titulo, descripcion, imagen)
+  const { title, content, descripcion, imagen } = req.body
+  const updatedPost = await db.updatePost(id, title, content, descripcion, imagen)
   if (!updatedPost) {
     res.status(400).json({ message: 'Post not found' })
   } else {

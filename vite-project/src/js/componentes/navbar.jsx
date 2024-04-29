@@ -1,29 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './styles/navbar.css'
-import { useEffect } from 'react';
 //import {useLocation} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
     //const location = useLocation();
     const userRol = localStorage.getItem('sessionId');
-    useEffect(() => {
-        const handleScroll = () => {
-            var navbar = document.getElementById('navbar');
-            if (window.scrollY > 0) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-
-        // Limpiar el event listener cuando el componente se desmonta
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     //navegacion
     const navigate = useNavigate();
@@ -45,6 +28,10 @@ function Navbar(){
         navigate("/postinfo");
     };
 
+    const handleNewPost2 = () => {
+        navigate("/postdata");
+    };
+
     const handleDeletePost = () => {
         navigate("/delete");
     };
@@ -55,21 +42,33 @@ function Navbar(){
 
     return(
         <>
-        <div className="navbar-body">
-        <nav className="navbar navbar-expand-lg ">
+        <div className=" navbar-body">
+        <nav className="navbar navbar-expand-lg">
+
             <div className="container-fluid">
-            <a className="navbar-brand nav-text" href="/home" onClick={handleHome}>Blog </a>            
+            <a className="navbar-brand nav-text textnav" href="/home" onClick={handleHome}>Blog </a>   
             </div>
-            <div className="iniciosesion">
-            <button type="button" className="btn"  onClick={handleLogin}>Iniciar Sesión</button>
-            </div>
+            {userRol ===null && location.pathname !== '/login' &&(
+                <div className="iniciosesion">
+                    <button type="button" className="btn"  onClick={handleLogin}>Iniciar Sesión</button>
+                </div>
+            )}
+            
+            {
+                location.pathname === '/login' &&(
+                <div className="regresar">
+                    <button type="button" className="btn"  onClick={handleHome}>regresar</button>
+                </div>
+                )
+            }
 
             {userRol ==='admin' &&(
                 <div className="admin">
-                <button type="button" className="btn"  onClick={handleNewPost}>agregar post</button>
-                <button type="button" className="btn"  onClick={handleUpdatePost}>actualizar post</button>
-                <button type="button" className="btn"  onClick={handleDeletePost}>borrar post</button>
-                <button type="button" className="btn"  onClick={handleLogOut}>cerrar sesión</button>
+                    <button type="button" className="btn"  onClick={handleNewPost}>agregar post</button>
+                    <button type="button" className="btn"  onClick={handleNewPost2}>agregar info</button>
+                    <button type="button" className="btn"  onClick={handleUpdatePost}>actualizar post</button>
+                    <button type="button" className="btn"  onClick={handleDeletePost}>borrar post</button>
+                    <button type="button" className="btn"  onClick={handleLogOut}>cerrar sesión</button>
                 </div>
             )}
             
