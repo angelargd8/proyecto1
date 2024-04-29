@@ -1,6 +1,7 @@
 import React from 'react'
 import './styles/post.css'
 function PostData() {
+    const userRol = localStorage.getItem('sessionId');
     
     const [posts, setPost] = React.useState([])
     const [content, setContent] = React.useState('')
@@ -44,32 +45,35 @@ function PostData() {
 
 
     return(
-    <div className='formulario'>
-        <form onSubmit={handleSubmit} >
-            <label>
-                Título:
-                <input className='input' type="text" value={title} onChange={e => setTitle(e.target.value)} />
-            </label>
-            <label>
-                Contenido:
-                <textarea className='input' value={content} onChange={e => setContent(e.target.value)} />
-            </label>
-            <label>
-                Descripción:
-                <textarea className='input' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-            </label>
-            <label>
-                Imagen:
-                <input className='input' type="text" value={imagen} onChange={e => setImagen(e.target.value)} />
-            </label>
-            <div className="div">
-            <button className='boton' type="submit">Enviar</button>
-            </div>           
-            
-        </form>
-        
-
+    <div className="base">
+        {userRol === 'admin' && (
+        <div className='formulario'>
+            <form onSubmit={handleSubmit} >
+                <label>
+                    Título:
+                    <input className='input' type="text" value={title} onChange={e => setTitle(e.target.value)} />
+                </label>
+                <label>
+                    Contenido:
+                    <textarea className='input' value={content} onChange={e => setContent(e.target.value)} />
+                </label>
+                <label>
+                    Descripción:
+                    <textarea className='input' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                </label>
+                <label>
+                    Imagen:
+                    <input className='input' type="text" value={imagen} onChange={e => setImagen(e.target.value)} />
+                </label>
+                <div className="div">
+                <button className='boton' type="submit">Enviar</button>
+                </div>           
+                
+            </form>
+        </div>
+        )}
     </div>
+    
     )
 } 
 export default PostData;

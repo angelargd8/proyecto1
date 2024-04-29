@@ -4,7 +4,6 @@ import React from 'react'
 
 function Login(){
     const navigate = useNavigate();
-    const [data, setData] = React.useState([])
     const [username, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
 
@@ -29,9 +28,13 @@ function Login(){
       }
 
       let user = await response.json()
-      setData(user)
+      
+      let rol = user[0].rol
+      
+      localStorage.setItem('sessionId', rol)
+      alert('Bienvenido ' + user[0].username)
       navigate("/home");
-      console.log(user, data);
+      
     }
 
     return (

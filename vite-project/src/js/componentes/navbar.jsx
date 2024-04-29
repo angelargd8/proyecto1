@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
     //const location = useLocation();
+    const userRol = localStorage.getItem('sessionId');
     useEffect(() => {
         const handleScroll = () => {
             var navbar = document.getElementById('navbar');
@@ -34,6 +35,16 @@ function Navbar(){
         navigate("/login");
     };
 
+    const handleLogOut = () => {
+        localStorage.removeItem('sessionId');
+        alert('Sesión cerrada');
+        navigate("/home");
+    };
+
+    const handleNewPost = () => {
+        navigate("/postinfo");
+    };
+
     return(
         <>
         <div className="navbar-body">
@@ -44,6 +55,15 @@ function Navbar(){
             <div className="iniciosesion">
             <button type="button" className="btn"  onClick={handleLogin}>Iniciar Sesión</button>
             </div>
+
+            {userRol ==='admin' &&(
+                <div className="admin">
+                <button type="button" className="btn"  onClick={handleNewPost}>agregar post</button>
+                <button type="button" className="btn"  /*onClick={handleNewPost}*/>borrar post</button>
+                <button type="button" className="btn"  onClick={handleLogOut}>cerrar sesión</button>
+                </div>
+            )}
+            
         </nav>
         </div>
         </>
