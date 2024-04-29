@@ -3,9 +3,7 @@ import Contenido from './contenido';
 import PostData from './postInfo';
 import Login from './login';
 import DeletePost from './deletePost';
-
-//<Route path="/login" element={<Login />} />
-//<Route path="/signup" element={<SingUp />} />
+import UpdatePost from './updatePost';
 
 function AppRouter(){
 
@@ -18,6 +16,7 @@ function AppRouter(){
             <Route path="/postdata" element={<PostData />} />
             <Route path="/login" element={<Login />} />
             <Route path="/delete" element={<DeletePost />} />
+            <Route path="/update" element={<UpdatePost />} />
 
         </Routes>
     )

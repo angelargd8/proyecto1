@@ -49,22 +49,30 @@ function PostData() {
         {userRol === 'admin' && (
         <div className='formulario'>
             <form onSubmit={handleSubmit} >
-                <label>
-                    Título:
+                <div className="info">
+                    <label>
+                        Título:
+                    </label>
                     <input className='input' type="text" value={title} onChange={e => setTitle(e.target.value)} />
-                </label>
-                <label>
-                    Contenido:
+                </div>
+                <div className="info">                
+                    <label>
+                        Contenido:
+                    </label>
                     <textarea className='input' value={content} onChange={e => setContent(e.target.value)} />
-                </label>
-                <label>
-                    Descripción:
+                </div>
+                <div className="info">
+                    <label>
+                        Descripción:
+                    </label>
                     <textarea className='input' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-                </label>
-                <label>
-                    Imagen:
+                </div>
+                <div className="info">
+                    <label>
+                        Imagen:
+                    </label>
                     <input className='input' type="text" value={imagen} onChange={e => setImagen(e.target.value)} />
-                </label>
+                </div>
                 <div className="div">
                 <button className='boton' type="submit">Enviar</button>
                 </div>           

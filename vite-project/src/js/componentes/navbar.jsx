@@ -49,6 +49,10 @@ function Navbar(){
         navigate("/delete");
     };
 
+    const handleUpdatePost = () => {
+        navigate("/update");
+    };
+
     return(
         <>
         <div className="navbar-body">
@@ -63,6 +67,7 @@ function Navbar(){
             {userRol ==='admin' &&(
                 <div className="admin">
                 <button type="button" className="btn"  onClick={handleNewPost}>agregar post</button>
+                <button type="button" className="btn"  onClick={handleUpdatePost}>actualizar post</button>
                 <button type="button" className="btn"  onClick={handleDeletePost}>borrar post</button>
                 <button type="button" className="btn"  onClick={handleLogOut}>cerrar sesión</button>
                 </div>

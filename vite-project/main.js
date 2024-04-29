@@ -114,15 +114,14 @@ app.get('/posts/:postId', async (req, res) => {
 })
 
 //--update post
-app.put('/posts/:postId', async (req, res) => {
+app.put('/posts/update/:id', async (req, res) => {
   const { id } = req.params
-  const { title, content, titulo, descripcion, imagen } = req
+  const { title, content, titulo, descripcion, imagen } = req.body
   const updatedPost = await db.updatePost(id, title, content, titulo, descripcion, imagen)
   if (!updatedPost) {
     res.status(400).json({ message: 'Post not found' })
   } else {
-    res.status(200).json(updatedPost)
-    res.json({ message: 'Post updated' })
+    res.status(200).json({ message: 'Post updated', post: updatedPost })
   }
 
 })
