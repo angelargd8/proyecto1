@@ -10,6 +10,7 @@
     padding: 20px;
     justify-content: center;
     align-items: center;
+    background-color: #180729;
 
 }
 .login .formulario{
@@ -77,9 +78,10 @@
 
 @media screen and (max-width: 768px) {
     .login{
-        top:20px;
+        position: absolute;
+        top:-10px;
         left:-160px;
-        right: 0;
+        right: -40px;
         bottom: 0;
         padding: 80px;
         margin-top: 10px;
@@ -87,12 +89,14 @@
     }
 
     .login .formulario{
-        width: 80%; /* Ajusta este valor según tus necesidades */
-        height: auto; /* Ajusta este valor según tus necesidades */
+        margin-right: 20px;
+        margin-left: 140px;
+        width: 80%; 
+        height: auto; 
     }
 
     .login .btn{
-        width: 70%; /* Ajusta este valor según tus necesidades */
+        width: 70%; 
     }
 }
 
@@ -108,11 +112,11 @@
         margin-top: 10px;
     }
     .login .formulario{
-        width: 100%; /* Ajusta este valor según tus necesidades */
-        height: auto; /* Ajusta este valor según tus necesidades */
+        width: 100%; 
+        height: auto; 
     }
 
     .login .btn{
-        width: 100%; /* Ajusta este valor según tus necesidades */
+        width: 100%; 
     }
 }
