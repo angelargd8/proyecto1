@@ -13,6 +13,19 @@
     color: #ffffff;
     font-size: large;
 }
+
+@media screen and (max-width: 768px){
+    .baseupdate .formulario{
+        position: absolute;
+        top: 5px;
+        left:-140px;
+        right: -40px;
+        bottom: 0;
+        height: 80%;
+    }
+
+}
+
 .baseupdate .info label{
     width: 200px;
     display: inline-block;

@@ -15,6 +15,18 @@
     font-size: large;
 }
 
+@media screen and (max-width: 768px){
+    .basep .formulario{
+        position: absolute;
+        top: 11px;
+        left:-140px;
+        right: -40px;
+        bottom: 0;
+        height: 80%;
+    }
+
+}
+
 .basep .input{
     flex-direction: row;
     margin-left: 15%;

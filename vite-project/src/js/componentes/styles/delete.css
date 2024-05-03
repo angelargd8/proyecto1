@@ -15,6 +15,18 @@
     font-size: large;
 }
 
+@media screen and (max-width: 768px){
+     .formulario{
+        position: absolute;
+        top: 5px;
+        left:-140px;
+        right: -40px;
+        bottom: 0;
+        height: 50%;
+    }
+
+}
+
 .input{
     flex-direction: row;
     margin-right: 5%;

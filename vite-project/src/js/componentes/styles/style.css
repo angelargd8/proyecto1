@@ -28,7 +28,7 @@ div.footerClass{
         font-size: 110px !important;
         text-align: center;
         color: #dbbfbf !important;
-        margin-top: 30%;
+        margin-top: 35%;
     }
 }
 
@@ -64,7 +64,7 @@ div.info{
 div.data2,
 div.info2{
     background-color: #765689b6;
-    padding: 50px;
+    padding: 80px;
     border-radius: 10px;
     position: flex-center;
     margin-right: 20px;
