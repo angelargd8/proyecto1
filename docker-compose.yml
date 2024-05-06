@@ -3,7 +3,6 @@ name: blog-app
 services:
   mysql_blog2:
     build: ./mysql_docker
-    image: mysql_blog2
     ports:
       - "33068:3306"
 
@@ -15,7 +14,7 @@ services:
     volumes:
       - "mysql-data:/var/lib/mysql" 
     api: 
-      build: ../api
+      build: ./api
       ports:
         - "5173:5173"
       depends_on:
