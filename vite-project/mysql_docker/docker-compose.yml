@@ -1,7 +1,0 @@
-version: '3'
-services:
-  mysql_blog2:
-    build: .
-    image: mysql_blog2
-    ports:
-      - "33068:3306"

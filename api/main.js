@@ -5,7 +5,7 @@ const db = require('./db.js')
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('js-yaml')
 //para luego mandar la path al index
-const path = require('path')
+//const path = require('path')
 
 const app = express();
 
@@ -41,15 +41,11 @@ app.get('/', (/*req, res*/) => {
   //res.sendFile('index.html', { root: __dirname });
 })
 
-app.get('/index.html', (req, res) => {
-  //mandarle aqui el index
-  res.sendFile(path.join(__dirname, './index.html'))
+app.get('/index.html', () => {
   console.log('Hello World from Express!')
 })
 
-app.get('/index', (req, res) => {
-  //mandarle aqui el index
-  res.sendFile(path.join(__dirname, './index.html'))
+app.get('/index', () => {
   console.log('Hello World from Express!')
 })
 
@@ -61,7 +57,7 @@ app.get('/posts/info', async (req, res) => {
   }else{
     res.status(200).json(posts)
   } 
-  console.log('posts', posts)
+  //console.log('posts', posts)
 })
 
 //--get all posts from  functions
@@ -72,7 +68,7 @@ app.get('/posts/f', async (req, res) => {
   }else{
     res.status(200).json(posts)
   } 
-  console.log('posts', posts)
+  //console.log('posts', posts)
 })
 
 //--create post

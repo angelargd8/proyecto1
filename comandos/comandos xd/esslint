@@ -11,6 +11,8 @@ lo que se pone en el json:
 
 uso de npx:
 
+npm init @eslint/config
+
 npx eslint .
 
 npx eslint --init

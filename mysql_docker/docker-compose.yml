@@ -1,0 +1,29 @@
+version: '3'
+name: blog-app
+services:
+  mysql_blog2:
+    build: ./mysql_docker
+    image: mysql_blog2
+    ports:
+      - "33068:3306"
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password 
+      MYSQL_USER: blog_user
+      MYSQL_PASSWORD: blog_password
+      MYSQL_DATABASE: blog_db2
+    volumes:
+      - "mysql-data:/var/lib/mysql" 
+    api: 
+      build: ./api
+      ports:
+        - "5173:5173"
+      depends_on:
+        - mysql_blog2
+volumes:
+  mysql-data:
+    driver: "local"
+
+
+
+
