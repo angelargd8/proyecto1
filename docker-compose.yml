@@ -4,7 +4,7 @@ services:
   mysql_blog2:
     build: ./mysql_docker
     ports:
-      - "33068:3306"
+      - "33069:3306"
 
     environment:
       MYSQL_ROOT_PASSWORD: root_password 
@@ -16,7 +16,7 @@ services:
   api: 
     build: ./api
     ports:
-      - "3010:3010"
+      - "3010:3000"
     depends_on:
       - mysql_blog2
 volumes:
