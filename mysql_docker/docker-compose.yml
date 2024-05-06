@@ -15,7 +15,7 @@ services:
     volumes:
       - "mysql-data:/var/lib/mysql" 
     api: 
-      build: ./api
+      build: ../api
       ports:
         - "5173:5173"
       depends_on:
