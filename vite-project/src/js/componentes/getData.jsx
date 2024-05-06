@@ -1,19 +1,19 @@
-import React from 'react'
+//import React from 'react'
 import './styles/style.css'
+import useApi from './useApi';
 function GetData() {
-    const [data, setData] = React.useState([])
-    const [loading, setLoading] = React.useState(true)
-
-    async function llamarAPI(){
-        let info = await fetch('http://127.0.0.1:5173/posts/f')
-        let laInfo = await info.json()
-        //console.log(laInfo);
-        setData(laInfo)
-        setLoading(false) 
-    }
-
-     //reaccionar a un cambio
-     React.useEffect(() => {llamarAPI()}, []);
+    
+    const fetchFunc = async () => {
+        let info = await fetch('http://127.0.0.1:5173/posts/f');
+        let laInfo = await info.json();
+        return laInfo;
+      };
+    
+      const { data, loading, error } = useApi(fetchFunc);
+    
+      if (error) {
+        return <div>Error: {error.message}</div>;
+      }
 
     return(
     <div className="data">
