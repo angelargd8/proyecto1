@@ -16,7 +16,7 @@ app.use(cors({
     // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
     if(!origin) return callback(null, true);
 
-    const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173'];
+    const allowedOrigins = ['http://127.0.0.1:3010', 'http://localhost:3010', 'http://localhost:5173'];
     if(allowedOrigins.indexOf(origin) === -1){
       return callback(new Error('La política de CORS no permite este origen'), false);
     }
@@ -72,7 +72,7 @@ app.get('/posts/f', async (req, res) => {
 })
 
 //--create post
-app.post('/posts', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) => {
+app.post('/posts', cors({ origin: 'http://127.0.0.1:3010' }), async (req, res) => {
   try{
     console.log(req)
     const { title, content, descripcion, imagen } = req.body
@@ -86,7 +86,7 @@ app.post('/posts', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) =
 })
 
 //--create post 2
-app.post('/posts/p', cors({ origin: 'http://127.0.0.1:5173' }), async (req, res) => {
+app.post('/posts/p', cors({ origin: 'http://127.0.0.1:3010' }), async (req, res) => {
   try{
     console.log(req)
     const { funcion, informacion } = req.body
@@ -149,9 +149,9 @@ app.post('/login', async (req, res) => {
 
 
 //inicio del server
-const port = 5173
+const port = 3010
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  //console.log(`Example app listening at http://localhost:${port}`)
   console.log(`Server listening at http://127.0.0.1:${port}`)
 })
 
