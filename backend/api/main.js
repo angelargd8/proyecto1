@@ -4,13 +4,10 @@ const db = require('./db.js')
 
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('js-yaml')
-//para luego mandar la path al index
-//const path = require('path')
 
 const app = express();
 
 //middleware para json Aca es donde se usa los cors
-//app.use(cors(/*{ origin: 'http://localhost:5173' }*/));
 app.use(cors({
   origin: function(origin, callback){
     // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
@@ -27,18 +24,13 @@ app.use(cors({
 app.use(express.json())
 
 //cargar el archivo YAML que describe endpoints
-//const swaggerDocument = yaml.load('./swagger.yaml')
 const swaggerDocument = yaml.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-//app.use(express.static(path.join(__dirname, 'vite-project/src')))
 app.use(express.static('vite-project'));
 
 
 app.get('/', (/*req, res*/) => {
-  //res.send('Hello World from Express!')
-  //res.sendFile(path.join(__dirname, './index.html'))
   console.log('Hello World from Express!')
-  //res.sendFile('index.html', { root: __dirname });
 })
 
 app.get('/index.html', () => {

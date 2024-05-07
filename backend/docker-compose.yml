@@ -1,5 +1,5 @@
 version: '3'
-name: blog-app
+name: blog-app-angela
 services:
   mysql_blog2:
     build: ./mysql_docker
@@ -7,7 +7,7 @@ services:
       - "33069:3306"
 
     environment:
-      MYSQL_ROOT_PASSWORD: root_password 
+      MYSQL_ROOT_PASSWORD: root_password
       MYSQL_USER: blog_user
       MYSQL_PASSWORD: blog_password
       MYSQL_DATABASE: blog_db2

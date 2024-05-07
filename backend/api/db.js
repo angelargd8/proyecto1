@@ -1,4 +1,3 @@
-//import conn from './conn.js';
 const conn = require('./conn.js')
 
 /*
