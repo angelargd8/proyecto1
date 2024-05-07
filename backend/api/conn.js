@@ -1,14 +1,14 @@
 const mysql = require('mysql2/promise')
 
 const pool = mysql.createPool({
-    host: 'mysql',
+    host: 'mysql_blog3',
     user: 'root',
     database: 'blog_db3',
     password: 'root_password',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
-    port: 3306
+    port: 33069
 })
 
 module.exports = pool
