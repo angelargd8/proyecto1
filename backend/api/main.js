@@ -26,7 +26,7 @@ app.use(express.json())
 //cargar el archivo YAML que describe endpoints
 const swaggerDocument = yaml.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.use(express.static('vite-project'));
+//app.use(express.static('vite-project'));
 
 
 app.get('/', (/*req, res*/) => {

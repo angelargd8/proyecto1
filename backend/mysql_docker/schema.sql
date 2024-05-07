@@ -26,3 +26,4 @@ CREATE TABLE IF NOT EXISTS users (
     password MEDIUMTEXT NOT NULL,
     rol VARCHAR(255) NOT NULL
 );
+INSERT INTO users (username, password, rol) VALUES ('angel', '123', 'admin');
