@@ -38,12 +38,12 @@ async function deletePost(id){
 
 //crear post 2
 async function createPost2(funcion, informacion) {
-    const [result] = await conn.query('INSERT INTO blog_db2.funciones (funcion, informacion) VALUES (?, ?)', [funcion, informacion])
+    const [result] = await conn.query('INSERT INTO blog_db3.funciones (funcion, informacion) VALUES (?, ?)', [funcion, informacion])
     return result
 }
 
 async function getAllPostsFunctions() {
-    const [rows] = await conn.query('SELECT * FROM blog_db2.funciones')
+    const [rows] = await conn.query('SELECT * FROM blog_db3.funciones')
     return rows
 }
     

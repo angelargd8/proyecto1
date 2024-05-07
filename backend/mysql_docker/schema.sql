@@ -1,10 +1,10 @@
 -- Create the database
-CREATE DATABASE IF NOT EXISTS blog_db2;
-USE blog_db2;
+CREATE DATABASE IF NOT EXISTS blog_db3;
+USE blog_db3;
 
 -- Create a user and grant privileges
 CREATE USER IF NOT EXISTS 'blog_user'@'%' IDENTIFIED BY 'blog_password';
-GRANT ALL PRIVILEGES ON blog_db2.* TO 'blog_user'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON blog_db3.* TO 'blog_user'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 CREATE TABLE IF NOT EXISTS blogs (

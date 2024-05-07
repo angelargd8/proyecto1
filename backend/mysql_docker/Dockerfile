@@ -2,7 +2,7 @@
 FROM mysql:latest 
 #setiar variabls que vausar sql enla instalacion
 
-ENV MYSQL_DATABASE=blog_db2
+ENV MYSQL_DATABASE=blog_db3
 ENV MYSQL_ROOT_PASSWORD=root_password
 #user y password para mysql
 ENV MYSQL_USER=blog_user

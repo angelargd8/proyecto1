@@ -1,7 +1,7 @@
 version: '3'
 name: blog-app-angela
 services:
-  mysql_blog2:
+  mysql_blog3:
     build: ./mysql_docker
     ports:
       - "33069:3306"
@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_USER: blog_user
       MYSQL_PASSWORD: blog_password
-      MYSQL_DATABASE: blog_db2
+      MYSQL_DATABASE: blog_db3
     volumes:
       - "mysql-data:/var/lib/mysql" 
   api: 
@@ -18,7 +18,7 @@ services:
     ports:
       - "3010:3000"
     depends_on:
-      - mysql_blog2
+      - mysql_blog3
 volumes:
   mysql-data:
     driver: "local"
