@@ -13,7 +13,7 @@ app.use(cors({
     // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
     if(!origin) return callback(null, true);
 
-    const allowedOrigins = ['http://127.0.0.1:3010', 'http://localhost:3010', 'http://localhost:5173'];
+    const allowedOrigins = ['http://127.0.0.1:3010', 'http://localhost:3010', 'http://localhost:5173','http://uwu-guate.site:3200'];
     if(allowedOrigins.indexOf(origin) === -1){
       return callback(new Error('La política de CORS no permite este origen'), false);
     }
