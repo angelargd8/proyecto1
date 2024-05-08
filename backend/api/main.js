@@ -8,7 +8,7 @@ const yaml = require('js-yaml')
 const app = express();
 
 //middleware para json Aca es donde se usa los cors
-app.use(cors({
+var corsOptions = {
   origin: function(origin, callback){
     // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
     if(!origin) return callback(null, true);
@@ -18,8 +18,14 @@ app.use(cors({
       return callback(new Error('La política de CORS no permite este origen'), false);
     }
     return callback(null, true);
-  }
-}));
+  },
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json())
 
