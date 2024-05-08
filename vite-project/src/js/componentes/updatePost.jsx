@@ -28,7 +28,7 @@ function UpdatePost(){
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:3010/post/update/${id}`,{
+            const response = await fetch(`http://uwu-guate.site:3010/post/update/${id}`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

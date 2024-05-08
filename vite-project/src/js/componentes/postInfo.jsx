@@ -30,7 +30,7 @@ function PostInfo() {
         }
 
         try {
-            const response = await fetch('http://127.0.0.1:3010/posts', {
+            const response = await fetch('http://uwu-guate.site:3010/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

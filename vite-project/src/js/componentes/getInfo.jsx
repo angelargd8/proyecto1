@@ -4,7 +4,7 @@ import useApi from './useApi';
 function GetInfo() {
 
     const fetchFunc = async () => {
-        let info = await fetch('http://127.0.0.1:3010/posts/info');
+        let info = await fetch('http://uwu-guate.site:3010/posts/info');
         let laInfo = await info.json();
         return laInfo;
       };
