@@ -1,5 +1,4 @@
 const express = require('express')
-const cors = require('cors')
 const db = require('./db.js')
 
 const swaggerUi = require('swagger-ui-express')
@@ -7,25 +6,7 @@ const yaml = require('js-yaml')
 
 const app = express();
 
-//middleware para json Aca es donde se usa los cors
-var corsOptions = {
-  origin: function(origin, callback){
-    // Permitir solicitudes sin 'origin' (como las de aplicaciones móviles o curl)
-    if(!origin) return callback(null, true);
 
-    const allowedOrigins = ['http://127.0.0.1:3010', 'http://localhost:3010', 'http://localhost:5173','http://uwu-guate.site:3200'];
-    if(allowedOrigins.indexOf(origin) === -1){
-      return callback(new Error('La política de CORS no permite este origen'), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}
-
-app.use(cors(corsOptions));
 
 app.use(express.json())
 
@@ -70,7 +51,7 @@ app.get('/posts/f', async (req, res) => {
 })
 
 //--create post
-app.post('/posts', cors({ origin: 'http://127.0.0.1:3010' }), async (req, res) => {
+app.post('/posts',async (req, res) => {
   try{
     console.log(req)
     const { title, content, descripcion, imagen } = req.body
@@ -84,7 +65,7 @@ app.post('/posts', cors({ origin: 'http://127.0.0.1:3010' }), async (req, res) =
 })
 
 //--create post 2
-app.post('/posts/p', cors({ origin: 'http://127.0.0.1:3010' }), async (req, res) => {
+app.post('/posts/p', async (req, res) => {
   try{
     console.log(req)
     const { funcion, informacion } = req.body
