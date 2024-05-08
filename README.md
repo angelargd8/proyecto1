@@ -1,6 +1,10 @@
 # proyecto1
 # Link del blog: 
     http://uwu-guate.site:3200/
+
+## usuario adminitrador
+    user:angel  
+    password: 123
 ## Descripcion del proyecto
     En este proyecto se aplican conocimientos prácticos acerca del desarrollo de Javascript, usando react y vite para la creacion de una aplicacion web. Además, que se implementa el lado del servidor de la aplicacion web. 
 
