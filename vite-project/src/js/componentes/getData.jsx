@@ -20,6 +20,8 @@ function GetData() {
         <h1>Las funciones cognitivas:</h1><br></br>
         {loading ? (
             <div className="spinner"></div> 
+        ):data && data.message ? (
+            <div className="spinner"></div> 
         ) : (
             <ul>
                 {data.map( elemento => {
@@ -32,7 +34,9 @@ function GetData() {
                     );
                 })}
             </ul>
-        )}
+        )
+        }
+        
     </div>
     )
 } 

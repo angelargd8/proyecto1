@@ -1,7 +1,7 @@
 version: '3'
 name: blog-app-angela
 services:
-  mysql_blog3:
+  mysql:
     build: ./mysql_docker
     ports:
       - "33069:3306"
@@ -17,7 +17,7 @@ services:
     ports:
       - "3010:3010"
     depends_on:
-      - mysql_blog3
+      - mysql
     environment:
       - DATABASE_HOST=mysql_blog3
 volumes:

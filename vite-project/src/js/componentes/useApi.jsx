@@ -15,6 +15,7 @@ function useApi(apiFunc) {
       } catch (err) {
         setError(err);
         setLoading(false);
+        console.log("bandera");
       }
     };
 
